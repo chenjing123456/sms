@@ -15,13 +15,13 @@ export default {
 	},
 	actions:{
 		findAllClass(context){
-			axios.get('http://127.0.0.1:3000/clazz/findAll').then(({data})=>{
+			axios.get('http://47.94.232.208:3389/clazz/findAll').then(({data})=>{
 				context.commit('alterClass',data);	
 			})
 		},
 		saveClass(context,form){
 			return new Promise(function(reslove,reject){
-					axios.post('http://127.0.0.1:3000/clazz/save',form).then((result)=>{
+					axios.post('http://47.94.232.208:3389/clazz/save',form).then((result)=>{
 						context.dispatch('findAllClass');
 						reslove(result);
 				}).catch(function(error){
@@ -31,7 +31,7 @@ export default {
 		},
 		updateClass(context,form){
 			return new Promise((reslove,reject)=>{
-				axios.post('http://127.0.0.1:3000/clazz/update',form).then((result)=>{
+				axios.post('http://47.94.232.208:3389/clazz/update',form).then((result)=>{
 					context.dispatch('findAllClass');
 					reslove(result);
 				}).catch(function(error){
@@ -41,12 +41,12 @@ export default {
 			
 		},
 		batchDeleteClass(context,id){
-			axios.post('http://127.0.0.1:3000/clazz/batchDelete',{ids:JSON.stringify(id)}).then((result)=>{
+			axios.post('http://47.94.232.208:3389/clazz/batchDelete',{ids:JSON.stringify(id)}).then((result)=>{
 				context.dispatch('findAllClass');
 			})
 		},
 		queryClass(context,keys){
-			axios.get('http://127.0.0.1:3000/clazz/query/'+keys).then(({data})=>{
+			axios.get('http://47.94.232.208:3389/clazz/query/'+keys).then(({data})=>{
 				context.commit('alterClass',data);
 			})
 		}
