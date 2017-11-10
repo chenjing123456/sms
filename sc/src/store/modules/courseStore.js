@@ -15,13 +15,13 @@ export default {
 	},
 	actions:{
 		findAllCourse(context){
-			axios.get('http://47.94.232.208:3389/course/findAll').then(({data})=>{
+			axios.get('http://47.94.232.208:3001/course/findAll').then(({data})=>{
 				context.commit('alterCourse',data);	
 			})
 		},
 		saveCourse(context,form){
 			return new Promise(function(reslove,reject){
-					axios.post('http://47.94.232.208:3389/course/save',form).then((result)=>{
+					axios.post('http://47.94.232.208:3001/course/save',form).then((result)=>{
 						context.dispatch('findAllCourse');
 						reslove(result);
 				}).catch(function(error){
@@ -31,7 +31,7 @@ export default {
 		},
 		updateCourse(context,form){
 			return new Promise((reslove,reject)=>{
-				axios.post('http://47.94.232.208:3389/course/update',form).then((result)=>{
+				axios.post('http://47.94.232.208:3001/course/update',form).then((result)=>{
 					context.dispatch('findAllCourse');
 					reslove(result);
 				}).catch(function(error){
@@ -41,12 +41,12 @@ export default {
 			
 		},
 		batchDeleteCourse(context,id){
-			axios.post('http://47.94.232.208:3389/course/batchDelete',{ids:JSON.stringify(id)}).then((result)=>{
+			axios.post('http://47.94.232.208:3001/course/batchDelete',{ids:JSON.stringify(id)}).then((result)=>{
 				context.dispatch('findAllCourse');
 			})
 		},
 		queryCourse(context,keys){
-			axios.get('http://47.94.232.208:3389/course/query/'+keys).then(({data})=>{
+			axios.get('http://47.94.232.208:3001/course/query/'+keys).then(({data})=>{
 				context.commit('alterCourse',data);
 			})
 		}

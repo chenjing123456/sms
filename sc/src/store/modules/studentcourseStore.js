@@ -15,13 +15,13 @@ export default {
 	},
 	actions:{
 		findAllStudentCourse(context){
-			axios.get('http://47.94.232.208:3389/sc/findSelectedCourse').then(({data})=>{
+			axios.get('http://47.94.232.208:3001/sc/findSelectedCourse').then(({data})=>{
 				context.commit('alterstudentCourse',data);	
 			})
 		},
 		saveStudentCourse(context,form){
 			return new Promise(function(reslove,reject){
-					axios.post('http://47.94.232.208:3389/sc/save',form).then((result)=>{
+					axios.post('http://47.94.232.208:3001/sc/save',form).then((result)=>{
 						context.dispatch('findAllStudentCourse');
 						reslove(result);
 				}).catch(function(error){
@@ -31,7 +31,7 @@ export default {
 		},
 		updateStudentCourse(context,form){
 			return new Promise((reslove,reject)=>{
-				axios.get('http://47.94.232.208:3389/sc/mark?id='+form.id+'&grade='+form.grade+'').then((result)=>{
+				axios.get('http://47.94.232.208:3001/sc/mark?id='+form.id+'&grade='+form.grade+'').then((result)=>{
 					context.dispatch('findAllStudentCourse');
 					reslove(result);
 				}).catch(function(error){
@@ -41,17 +41,17 @@ export default {
 			
 		},
 		batchDeleteStudentCourse(context,id){
-			axios.get('http://47.94.232.208:3389/sc/cancelCourse?studentId='+id.sid+'&courseId='+id.cid+'').then((result)=>{
+			axios.get('http://47.94.232.208:3001/sc/cancelCourse?studentId='+id.sid+'&courseId='+id.cid+'').then((result)=>{
 				context.dispatch('findAllStudentCourse');
 			})
 		},
 		queryStudentCourse(context,keys){
-			axios.get('http://47.94.232.208:3389/sc/query/'+keys).then(({data})=>{
+			axios.get('http://47.94.232.208:3001/sc/query/'+keys).then(({data})=>{
 				context.commit('alterstudentCourse',data);
 			})
 		},
 		selectCourse(context,form){
-			axios.get('http://47.94.232.208:3389/sc/selectCourse?studentId='+form.studentId+'&courseId='+form.courseId+'').then((result)=>{
+			axios.get('http://47.94.232.208:3001/sc/selectCourse?studentId='+form.studentId+'&courseId='+form.courseId+'').then((result)=>{
 				context.dispatch('findAllCourse');
 			})
 		}

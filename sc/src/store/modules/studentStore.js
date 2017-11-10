@@ -23,13 +23,13 @@ export default {
 	},
 	actions:{
 		findAllStudent(context){
-			axios.get('http://47.94.232.208:3389/student/findAll').then(({data})=>{
+			axios.get('http://47.94.232.208:3001/student/findAll').then(({data})=>{
 				context.commit('alterStudent',data);
 			})
 		},
 		saveStudent(context,form){
 			return new Promise(function(reslove,reject){
-					axios.post('http://47.94.232.208:3389/student/save',form).then((result)=>{
+					axios.post('http://47.94.232.208:3001/student/save',form).then((result)=>{
 						context.dispatch('findAllStudent');
 						reslove(result);
 				}).catch(function(error){
@@ -39,7 +39,7 @@ export default {
 		},
 		updateStudent(context,form){
 			return new Promise((reslove,reject)=>{
-				axios.post('http://47.94.232.208:3389/student/update',form).then((result)=>{
+				axios.post('http://47.94.232.208:3001/student/update',form).then((result)=>{
 					context.dispatch('findAllStudent');
 					reslove(result);
 				}).catch(function(error){
@@ -49,12 +49,12 @@ export default {
 			
 		},
 		batchDeleteStudent(context,id){
-			axios.post('http://47.94.232.208:3389/student/batchDelete',{ids:JSON.stringify(id)}).then((result)=>{
+			axios.post('http://47.94.232.208:3001/student/batchDelete',{ids:JSON.stringify(id)}).then((result)=>{
 				context.dispatch('findAllStudent');
 			})
 		},
 		queryStudent(context,keys){
-			axios.get('http://47.94.232.208:3389/student/query/'+keys).then(({data})=>{
+			axios.get('http://47.94.232.208:3001/student/query/'+keys).then(({data})=>{
 				context.commit('alterStudent',data);
 			})
 		}

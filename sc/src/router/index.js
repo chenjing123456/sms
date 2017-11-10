@@ -18,7 +18,7 @@ import SCTest from '@/pages/sc/test'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
+  routes: [    
     {
       path: '/student',
       component: student,

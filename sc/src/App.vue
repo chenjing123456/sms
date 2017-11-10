@@ -26,7 +26,7 @@
                 <span>学生管理</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/student/info">档案</el-menu-item>
+                <el-menu-item index="/student/info" class="trriger">档案</el-menu-item>
                 <el-menu-item index="/student/test">成绩</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
@@ -36,8 +36,8 @@
                 <span>课程管理</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/course/info">信息</el-menu-item>
-                <el-menu-item index="/course/test">test</el-menu-item>
+                <el-menu-item index="/course/info">课程</el-menu-item>
+                <el-menu-item index="/course/test">信息</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
              <el-submenu index="/clazz">
@@ -46,8 +46,8 @@
                 <span>班级管理</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/clazz/info">信息</el-menu-item>
-                <el-menu-item index="/clazz/test">test</el-menu-item>
+                <el-menu-item index="/clazz/info">班级</el-menu-item>
+                <el-menu-item index="/clazz/test">信息</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="/sc">
@@ -77,9 +77,11 @@ export default {
   name: 'app',
   mounted:function(){
     $('.navLeft').height($(window).height()-58);
-    $('.container').height($(window).height()-58)
+    $('.container').height($(window).height()-58);
+    // $('.navLeft li.el-menu-item.trriger.is-active').trigger('click');
   }
 }
+
 </script>
 
 <style>
